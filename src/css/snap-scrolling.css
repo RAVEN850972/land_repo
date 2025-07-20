@@ -1,0 +1,305 @@
+/**
+ * SNAP SCROLLING STYLES
+ * Дополнительные стили для улучшения снап-скроллинга
+ * Версия: 1.0.0
+ */
+
+/* ==========================================
+   ОСНОВНЫЕ СТИЛИ SNAP SCROLLING
+   ========================================== */
+
+/* Базовые настройки для HTML - отключаем CSS snap для ручного контроля */
+html {
+    scroll-snap-type: none; /* Отключено для JS контроля */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Убираем старый контейнер snap */
+.snap-container {
+    /* Удаляем конфликтующие стили */
+    scroll-snap-type: none !important;
+    height: auto !important;
+    overflow-y: visible !important;
+}
+
+/* Основные настройки для секций - готовы для JS snap */
+.snap-section {
+    scroll-snap-align: none; /* Управляется через JS */
+    scroll-snap-stop: normal;
+    min-height: 100vh;
+    height: auto;
+    position: relative;
+    box-sizing: border-box;
+    /* Добавляем плавные переходы */
+    transition: transform 0.1s ease-out;
+}
+
+/* ==========================================
+   СПЕЦИАЛЬНЫЕ СЛУЧАИ
+   ========================================== */
+
+/* Hero секция - всегда полная высота */
+.hero.snap-section {
+    height: 100vh;
+    min-height: 100vh;
+    scroll-snap-align: none; /* JS контроль */
+}
+
+/* Footer - готов для JS snap */
+.footer.snap-section {
+    scroll-snap-align: none;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* FAQ секция - может быть больше экрана */
+.faq.snap-section {
+    scroll-snap-align: none;
+    min-height: 100vh;
+    height: auto;
+    padding: 60px 0;
+}
+
+/* ==========================================
+   ПЛАВНЫЕ ПЕРЕХОДЫ И УЛУЧШЕНИЯ
+   ========================================== */
+
+/* Плавность скролла */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Индикатор активного снапа */
+.snap-section.snapping {
+    position: relative;
+}
+
+.snap-section.snapping::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    width: 3px;
+    height: 30px;
+    background: rgba(245, 245, 245, 0.8);
+    transform: translateY(-50%);
+    z-index: 1000;
+    border-radius: 2px;
+    animation: snapIndicator 0.5s ease;
+}
+
+@keyframes snapIndicator {
+    0% { opacity: 0; transform: translateY(-50%) scale(0.5); }
+    50% { opacity: 1; transform: translateY(-50%) scale(1.1); }
+    100% { opacity: 0.8; transform: translateY(-50%) scale(1); }
+}
+
+/* Улучшенная плавность прокрутки */
+@supports (scroll-behavior: smooth) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Webkit оптимизации */
+@supports (-webkit-scroll-snap-type: y mandatory) {
+    html {
+        -webkit-scroll-behavior: smooth;
+    }
+}
+
+/* ==========================================
+   МОБИЛЬНАЯ ОПТИМИЗАЦИЯ
+   ========================================== */
+
+@media (max-width: 768px) {
+    /* На мобильных полностью отключаем snap */
+    html {
+        scroll-snap-type: none !important;
+        -webkit-scroll-snap-type: none !important;
+    }
+    
+    .snap-section {
+        scroll-snap-align: none !important;
+        scroll-snap-stop: normal !important;
+        -webkit-scroll-snap-align: none !important;
+        -webkit-scroll-snap-stop: normal !important;
+        min-height: auto;
+        padding: 40px 0;
+        transition: none; /* Отключаем анимации */
+    }
+    
+    /* Hero остается полной высоты на мобильных */
+    .hero.snap-section {
+        min-height: 100vh;
+        height: 100vh;
+        padding: 0;
+    }
+    
+    /* Footer адаптируется */
+    .footer.snap-section {
+        min-height: auto;
+        padding: 60px 0 30px;
+    }
+    
+    /* Убираем индикаторы на мобильных */
+    .snap-section.snapping::after,
+    .snap-section.active::before {
+        display: none !important;
+    }
+}
+
+/* ==========================================
+   ПЛАНШЕТНАЯ ОПТИМИЗАЦИЯ
+   ========================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Более мягкий snap для планшетов */
+    html {
+        scroll-snap-type: y proximity;
+    }
+    
+    .snap-section {
+        scroll-snap-align: start;
+        scroll-snap-stop: normal;
+    }
+}
+
+/* ==========================================
+   ДЕСКТОПНАЯ ОПТИМИЗАЦИЯ
+   ========================================== */
+
+@media (min-width: 1025px) {
+    /* Строгий snap для десктопа */
+    html {
+        scroll-snap-type: y mandatory;
+    }
+    
+    .snap-section {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+    }
+}
+
+/* ==========================================
+   ВСПОМОГАТЕЛЬНЫЕ СТИЛИ
+   ========================================== */
+
+/* Индикатор текущей секции (опционально) */
+.snap-section.active {
+    position: relative;
+}
+
+.snap-section.active::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    width: 4px;
+    height: 40px;
+    background: #F5F5F5;
+    opacity: 0.7;
+    transform: translateY(-50%);
+    z-index: 1000;
+    border-radius: 2px;
+    transition: opacity 0.3s ease;
+}
+
+/* Скрываем индикатор на мобильных */
+@media (max-width: 768px) {
+    .snap-section.active::before {
+        display: none;
+    }
+}
+
+/* ==========================================
+   УЛУЧШЕНИЯ ПРОИЗВОДИТЕЛЬНОСТИ
+   ========================================== */
+
+/* GPU ускорение для плавности */
+.snap-section {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: scroll-position;
+}
+
+/* Оптимизация для браузеров */
+@supports (scroll-behavior: smooth) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* ==========================================
+   ДОСТУПНОСТЬ
+   ========================================== */
+
+/* Уважаем предпочтения пользователя */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+        scroll-snap-type: none !important;
+    }
+    
+    .snap-section {
+        scroll-snap-align: none !important;
+        scroll-snap-stop: normal !important;
+    }
+}
+
+/* Высокий контраст */
+@media (prefers-contrast: high) {
+    .snap-section.active::before {
+        background: #FFFFFF;
+        opacity: 1;
+    }
+}
+
+/* ==========================================
+   ОТЛАДКА (убрать в продакшене)
+   ========================================== */
+
+/* Включить для отладки */
+/*
+.snap-section {
+    border: 2px solid red;
+    position: relative;
+}
+
+.snap-section::after {
+    content: attr(id);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    z-index: 9999;
+}
+*/
+
+/* ==========================================
+   СОВМЕСТИМОСТЬ СО СТАРЫМИ БРАУЗЕРАМИ
+   ========================================== */
+
+/* Fallback для IE */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    html {
+        scroll-snap-type: none;
+    }
+    
+    .snap-section {
+        scroll-snap-align: none;
+    }
+}
+
+/* Fallback для очень старых webkit */
+@supports not (scroll-snap-type: y mandatory) {
+    html {
+        overflow-y: auto;
+    }
+}

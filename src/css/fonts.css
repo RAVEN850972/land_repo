@@ -1,0 +1,303 @@
+/* ========================================
+   FONTS.CSS - ЛОКАЛЬНЫЕ ШРИФТЫ
+   Emil Production - Variable Fonts
+   ======================================== */
+
+/* Playfair Display Variable Font */
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('fonts/Playfair/PlayfairDisplay-VariableFont_wght.woff2') format('woff2-variations'),
+         url('fonts/Playfair/PlayfairDisplay-VariableFont_wght.woff2') format('woff2');
+    font-weight: 400 900; /* Поддерживает все веса от 400 до 900 */
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Inter Variable Font */
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter/Inter-VariableFont_opsz,wght.woff2') format('woff2-variations'),
+         url('fonts/Inter/Inter-VariableFont_opsz,wght.woff2') format('woff2');
+    font-weight: 100 900; /* Поддерживает все веса от 100 до 900 */
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ========================================
+   БАЗОВЫЕ СТИЛИ ШРИФТОВ
+   ======================================== */
+
+/* Основной шрифт для body */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    font-variation-settings: 'wght' 400;
+}
+
+/* Шрифт для заголовков */
+h1, h2, h3, h4, h5, h6,
+.hero-title,
+.section-title,
+.logo h1,
+.brand-name,
+.faq-question h3,
+.team-member h3,
+.audience-card h3,
+.offer-item h3,
+.step-item h3,
+.investors-format h3,
+.partners-cta h3,
+.footer-brand h3,
+.footer-contacts h4,
+.footer-links h4,
+.footer-legal h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-variation-settings: 'wght' 400;
+}
+
+/* ========================================
+   УТИЛИТАРНЫЕ КЛАССЫ ВЕСОВ - INTER
+   ======================================== */
+
+.font-thin {
+    font-family: 'Inter', sans-serif;
+    font-weight: 100;
+    font-variation-settings: 'wght' 100;
+}
+
+.font-extralight {
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    font-variation-settings: 'wght' 200;
+}
+
+.font-light {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-variation-settings: 'wght' 300;
+}
+
+.font-regular {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-variation-settings: 'wght' 400;
+}
+
+.font-medium {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-variation-settings: 'wght' 500;
+}
+
+.font-semibold {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-variation-settings: 'wght' 600;
+}
+
+.font-bold {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-variation-settings: 'wght' 700;
+}
+
+.font-extrabold {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-variation-settings: 'wght' 800;
+}
+
+.font-black {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-variation-settings: 'wght' 900;
+}
+
+/* ========================================
+   УТИЛИТАРНЫЕ КЛАССЫ ВЕСОВ - PLAYFAIR
+   ======================================== */
+
+.playfair-regular {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-variation-settings: 'wght' 400;
+}
+
+.playfair-medium {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: 'wght' 500;
+}
+
+.playfair-semibold {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-variation-settings: 'wght' 600;
+}
+
+.playfair-bold {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-variation-settings: 'wght' 700;
+}
+
+.playfair-extrabold {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 800;
+    font-variation-settings: 'wght' 800;
+}
+
+.playfair-black {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-variation-settings: 'wght' 900;
+}
+
+/* ========================================
+   ИНТЕРАКТИВНЫЕ ЭФФЕКТЫ
+   ======================================== */
+
+/* Плавное изменение веса при hover */
+.hover-weight-change {
+    transition: font-weight 0.3s ease, font-variation-settings 0.3s ease;
+}
+
+.hover-weight-change:hover {
+    font-weight: 600;
+    font-variation-settings: 'wght' 600;
+}
+
+/* Анимация пульсации веса */
+@keyframes fontWeightPulse {
+    0%, 100% { font-variation-settings: 'wght' 400; }
+    50% { font-variation-settings: 'wght' 600; }
+}
+
+.animated-title {
+    animation: fontWeightPulse 3s ease-in-out infinite;
+}
+
+/* Эффект для кнопок */
+.btn.hover-weight-change:hover {
+    font-weight: 500;
+    font-variation-settings: 'wght' 500;
+}
+
+/* ========================================
+   СПЕЦИФИЧНЫЕ СТИЛИ ДЛЯ EMIL PRODUCTION
+   ======================================== */
+
+/* Логотип */
+.logo h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 500;
+    font-variation-settings: 'wght' 500;
+    letter-spacing: 2px;
+}
+
+/* Главный заголовок */
+.hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-variation-settings: 'wght' 400;
+}
+
+/* Описание в hero */
+.hero-description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-variation-settings: 'wght' 400;
+}
+
+/* Кнопки */
+.btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-variation-settings: 'wght' 400;
+}
+
+/* Текст в секциях */
+.about-text p,
+.investors-text p,
+.audience-card p,
+.step-item p,
+.faq-answer p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-variation-settings: 'wght' 400;
+}
+
+/* Жирный текст */
+strong, b {
+    font-weight: 600;
+    font-variation-settings: 'wght' 600;
+}
+
+/* ========================================
+   FALLBACK ДЛЯ СТАРЫХ БРАУЗЕРОВ
+   ======================================== */
+
+/* Если Variable Fonts не поддерживаются */
+@supports not (font-variation-settings: 'wght' 400) {
+    .font-light { font-weight: 300; }
+    .font-regular { font-weight: 400; }
+    .font-medium { font-weight: 500; }
+    .font-semibold { font-weight: 600; }
+    .font-bold { font-weight: 700; }
+    
+    .playfair-regular { font-weight: 400; }
+    .playfair-medium { font-weight: 500; }
+    .playfair-semibold { font-weight: 600; }
+    .playfair-bold { font-weight: 700; }
+    
+    /* Убираем font-variation-settings для старых браузеров */
+    body,
+    .font-regular,
+    .font-medium,
+    .font-semibold,
+    .font-bold,
+    .playfair-regular,
+    .playfair-medium,
+    .playfair-semibold,
+    .playfair-bold {
+        font-variation-settings: normal;
+    }
+}
+
+/* ========================================
+   МОБИЛЬНАЯ ОПТИМИЗАЦИЯ
+   ======================================== */
+
+@media (max-width: 767px) {
+    /* Упрощаем шрифты на мобильных для производительности */
+    body {
+        font-variation-settings: 'wght' 400;
+    }
+    
+    h1, h2, h3, h4, h5, h6,
+    .hero-title,
+    .section-title {
+        font-variation-settings: 'wght' 400;
+    }
+    
+    /* Отключаем анимации шрифтов на мобильных */
+    .animated-title {
+        animation: none;
+        font-variation-settings: 'wght' 400;
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Уважаем предпочтения пользователя */
+@media (prefers-reduced-motion: reduce) {
+    .animated-title,
+    .hover-weight-change {
+        animation: none !important;
+        transition: none !important;
+        font-variation-settings: 'wght' 400 !important;
+    }
+}
